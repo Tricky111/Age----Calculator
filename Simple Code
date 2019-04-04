@@ -1,0 +1,51 @@
+local AskTextField = display.newText( "Type How Old You Are In The Text Box Below.", display.contentCenterX + 1 , display.contentCenterY - 200, native.systemFont, 15)
+AskTextField.id = "AskTextField"
+AskTextField:setFillColor( 255, 255, 255 )
+
+
+
+local AgeTextField = native.newTextField( display.contentCenterX + 1, display.contentCenterY - 150, 300, 75 )
+AgeTextField.id = "AgeTextField"
+
+
+
+
+local calculateButton = display.newImageRect( "6-03.png", 200, 125 )
+calculateButton.x = display.contentCenterX
+calculateButton.y = display.contentCenterY -50
+calculateButton.id = "calculateButton"
+
+
+
+
+
+
+
+local MovieTextField = display.newText( "Please Enter Your Age To See What Movie You Can Watch", display.contentCenterX + 1 , display.contentCenterY +200, native.systemFont, 12 )
+MovieTextField.id = "MovieTextField"
+MovieTextField:setFillColor( 255, 255, 255 )
+
+local function calculateButtonTouch( event )
+
+local Age = tonumber(AgeTextField.text)
+
+
+if Age >= 17 then
+	MovieTextField.text = "You Can Watch An R Rated"
+
+	elseif Age>= 13 then
+		 MovieTextField.text = "You Can See A PG-13 Movie"
+
+		elseif Age>= 5 then
+			MovieTextField.text = "You Can See A PG Movie"
+
+				elseif Age>= 1 then
+			MovieTextField.text = "Your A bit To Young To Watch any movies"
+
+			    
+
+    return true
+end
+end
+
+calculateButton:addEventListener( "touch", calculateButtonTouch )
